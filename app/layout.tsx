@@ -15,15 +15,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
   title: {
     default: 'Kinyarwanda Chatbot',
-    template: `%s - Kin Chatbot`
+    template: `%s - iBot`
   },
   description:
     'A chatbot that use Kinyarwanda dataset',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png'
-  }
+    apple: '/apple-touch-icon.png',
+  },
 }
 
 export const viewport = {
