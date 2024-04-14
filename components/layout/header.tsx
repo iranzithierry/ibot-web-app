@@ -17,7 +17,7 @@ export function Header() {
             </div>
             <div className="flex items-center justify-end gap-2">
                 <Button asChild size="sm" className="rounded-lg gap-1 dark:text-white">
-                    <a href="https://vercel.com/#" target="_blank">
+                    <a href="https://github.com/iranzithierry/ibot-web-app" target="_blank">
                         <IconGitHub />
                         <span className="hidden sm:block">Contribute on GitHub</span>
                         <span className="sm:hidden">GitHub</span>
