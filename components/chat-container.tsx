@@ -3,13 +3,13 @@ import * as React from "react"
 // import ChatHeader from "./chat/header";
 import ChatBubble from "./chat/bubble";
 import ChatForm from "./chat/form";
-import { CardFooter  } from "@/components/ui/card"
+import { CardFooter } from "@/components/ui/card"
 import axios from "axios";
 import LoadingDots from "./inline/loading-dots";
 import { toast } from "sonner";
 import { ScrollArea } from "./ui/scroll-area";
 
-export function ChatBottom() {
+export function ChatContainer() {
     const [messages, setMessages] = React.useState<{ role: string; content: string; }[]>([])
     const [input, setInput] = React.useState("")
     const [isFetching, setIsFetching] = React.useState(false)
@@ -33,7 +33,7 @@ export function ChatBottom() {
         localStorage.setItem("messages", JSON.stringify(messages))
     }
     const retrieveLocalStorageMessages = () => {
-        let localMessages: object| null | string = {} 
+        let localMessages: object | null | string = {}
         localMessages = localStorage.getItem("messages")
         if (localMessages) {
             setMessages(JSON.parse(localMessages))
@@ -61,9 +61,11 @@ export function ChatBottom() {
                     </div>
                 </div>
             </ScrollArea>
-            <CardFooter className="!px-0 py-1 fixed sm:absolute inset-x-0 w-full bottom-0 right-0 z-20 left-0  backdrop-blur-md">
-                <ChatForm inputLength={inputLength} setMessage={handleMessage} setInput={setInput} input={input} isFetching={isFetching} />
-            </CardFooter>
+            <div className="fixed bottom-0 inset-x-0 pb-2">
+                <CardFooter className="!px-0 py-1 mx-auto max-w-2xl flex justify-center">
+                    <ChatForm inputLength={inputLength} setMessage={handleMessage} setInput={setInput} input={input} isFetching={isFetching} />
+                </CardFooter>
+            </div>
         </div>
     )
 }
