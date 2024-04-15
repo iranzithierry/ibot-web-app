@@ -41,6 +41,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+      </head>
       <body className={cn("bg-background font-sans antialiased", fontSans.variable)}>
         <Toaster richColors position="top-right" />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
