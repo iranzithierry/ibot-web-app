@@ -14,7 +14,8 @@ export function ChatContainer() {
     const [input, setInput] = React.useState("")
     const [isFetching, setIsFetching] = React.useState(false)
 
-    const inputLength = input.trim().length
+    const inputLength = input.trim().length;
+    const scrollRef = React.useRef<HTMLDivElement>(null)
 
     const handleMessage = async (message: string) => {
         try {
@@ -40,6 +41,8 @@ export function ChatContainer() {
         }
 
     }
+    const scrollToEnd = () => scrollRef?.current?.scrollIntoView({ behavior: "smooth",  block: 'end' })
+    React.useEffect(() => scrollToEnd(), [messages])
     React.useEffect(() => retrieveLocalStorageMessages(), [])
 
     return (
@@ -48,8 +51,8 @@ export function ChatContainer() {
                 <ChatHeader />
             </CardHeader> */}
             <ScrollArea className="px-4 sm:px-3">
-                <div className="pb-2">
-                    <div className="pb-16 space-y-1">
+                <div className="pb-2 max-h-[88vh]">
+                    <div className="pb-16 space-y-1" ref={scrollRef}>
                         {messages.map((message, index) => (
                             <ChatBubble key={index} content={message.content} owner={message.role} />
                         ))}
@@ -61,8 +64,8 @@ export function ChatContainer() {
                     </div>
                 </div>
             </ScrollArea>
-            <div className="fixed bottom-0 inset-x-0 pb-2">
-                <CardFooter className="!px-0 py-1 mx-auto max-w-2xl flex justify-center">
+            <div className="fixed bottom-0 inset-x-0">
+                <CardFooter className="!p-0 mx-auto max-w-2xl">
                     <ChatForm inputLength={inputLength} setMessage={handleMessage} setInput={setInput} input={input} isFetching={isFetching} />
                 </CardFooter>
             </div>

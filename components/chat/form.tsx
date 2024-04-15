@@ -20,7 +20,7 @@ export default function ChatForm({ inputLength, setMessage, setInput, input, isF
         setInput("")
     }
     return (
-        <form onSubmit={onSubmit} className="flex w-full items-center space-x-2 pb-6 px-1 sm:px-4 z-30 relative">
+        <form onSubmit={onSubmit} className="flex w-full items-center space-x-2 pb-2 sm:pb-4 px-1 sm:px-4 z-30 relative backdrop-blur-md">
             <Input id="message" placeholder="Type your message..." className="flex-1 rounded-sm sm:rounded-md" autoComplete="off"
                 value={input}
                 onChange={(event) => setInput(event.target.value)}
