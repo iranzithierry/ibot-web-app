@@ -79,7 +79,6 @@ const config = {
     },
   },
   plugins: [
-    require("@tailwindcss/forms"),
     require("tailwindcss-animate"), 
     require('@tailwindcss/typography')],
 } satisfies Config
